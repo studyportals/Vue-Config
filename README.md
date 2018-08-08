@@ -7,7 +7,7 @@ ensured that the packages run on the same version.
 
 ## "But my application requires a package to run on a different version"
 
-In that case, that specific package can be updated, but you **first** need to 
+In that case, that specific package can be updated, but you **first** need to
 **align with all the other teams that have a Vue application to re-deploy once the
 version is changed**, to avoid any conflicts between applications that depend on
 the same `vue-config`-based library file.
@@ -26,14 +26,29 @@ Vue applications to run on the same version of:**
 ## How to use this package
 
 Remove `vue`, `vuex`, `vue-router` and `vue-template-compiler` from your package.json
-(if they were included in the first place). Instead, run `npm install @studyportals/vue-config`. 
-Try to run your application to see if it still works. If not, check in your 
+(if they were included in the first place). Instead, run `npm install @studyportals/vue-config`.
+
+Change all the import statements to use the dependencies from `@studyportals/vue-config`
+```TypeScript
+import { Vue, VueRouter, Vuex, VueTemplateCompiler } from '@studyportals/vue-config';
+```
+
+```JavaScript
+const VueConfig = require(@studyportals/vue-config);
+const Vue = VueConfig.Vue;
+const VueRouter = VueConfig.VueRouter;
+const Vuex = VueConfig.Vuex;
+const VueTemplateCompiler = VueConfig.VueTemplateCompiler;
+```
+
+
+Try to run your application to see if it still works. If not, check in your
 `package-lock.json` whether the packages that `vue-config` should take care off
 are all included.
 
 ### Webpack
 
-If you make use of webpack in your building process, the module object inside should 
+If you make use of webpack in your building process, the module object inside should
 also include the following:
 
 ``` javascript
@@ -54,13 +69,13 @@ accessible in the same file and should have contents like this:
 
 ``` javascript
 exports.determineAlias = function(name){
-    
+
     // Default, not minified.
     let alias = `${name}/dist/${name}.common.js`;
-    
+
     // Only if we are in production environment, take the minified version.
     if(JSON.stringify(process.env.NODE_ENV) === "production"){
-    
+
         alias = `${name}/dist/${name}.min.js`;
     }
 
