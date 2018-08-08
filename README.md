@@ -33,6 +33,8 @@ Change all the import statements to use the dependencies from `@studyportals/vue
 import { Vue, VueRouter, Vuex, VueTemplateCompiler } from '@studyportals/vue-config';
 ```
 
+Or
+
 ```JavaScript
 const VueConfig = require(@studyportals/vue-config);
 const Vue = VueConfig.Vue;
@@ -40,7 +42,6 @@ const VueRouter = VueConfig.VueRouter;
 const Vuex = VueConfig.Vuex;
 const VueTemplateCompiler = VueConfig.VueTemplateCompiler;
 ```
-
 
 Try to run your application to see if it still works. If not, check in your
 `package-lock.json` whether the packages that `vue-config` should take care off
