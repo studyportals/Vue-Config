@@ -1,25 +1,30 @@
 const path = require("path");
 const webpack = require("webpack");
-const {determineAlias, setProcessEnvPlugin, setUglifyPlugin} = require('./webpack-helpers.js');
+const {setProcessEnvPlugin, setUglifyPlugin} = require('./webpack-helpers.js');
+
+const dllFolder = path.join(__dirname, "dist");
 
 module.exports = {
-	entry: {
-		vueConfig:[
-			'./index.js',
-		]
-	},
-	output: {
-		filename: '[name].js',
-		path: path.join(__dirname, "dll"),
-		library: '[name]'
-	},
-	plugins: [
-		new webpack.DllPlugin({
-			path: path.join(__dirname, "dll", "[name].json"),
-			name: "[name]",
-			context: path.resolve(__dirname, "client")
-		})
-	],
+  context: process.cwd(),
+  resolve: {
+     extensions: ['.js', '.jsx', '.json', '.less', '.css'],
+     modules: [__dirname, 'node_modules']
+  },
+  entry: {
+     library: [
+        './index.js',
+     ]
+  },
+  output: {
+     filename: '[name].dll.js',
+     path: dllFolder,
+  },
+  plugins: [
+    new webpack.DllPlugin({
+       name: '[name]',
+       path: path.join(dllFolder, '[name].manifest.json')
+    })
+ ]
 };
 
 module.exports.plugins = setProcessEnvPlugin(module.exports.plugins);
