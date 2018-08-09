@@ -1,7 +1,7 @@
 {
   "name": "@studyportals/vue-config",
   "description": "Collection of vue-related packages.",
-  "version": "1.2.0-alpha.0",
+  "version": "1.2.0-alpha.1",
   "author": "Studyportals B.V.",
   "contributors": [
     "Joos Huys <joos@studyportals.com>",
@@ -13,7 +13,7 @@
     "build-prod": "npm run clear-dist-folder && cross-env NODE_ENV=production webpack",
     "prepublishOnly": "npm run build-prod"
   },
-  "main": "index.js",
+  "main": "dist/vueConfig.js",
   "keywords": [
     "vue"
   ],
