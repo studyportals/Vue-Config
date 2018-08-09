@@ -3,8 +3,8 @@ const VueRouter = require('vue-router').default;
 const Vuex = require('vuex').default;
 
 module.exports = {
-    Vue,
-    VueRouter,
-    Vuex,
+    Vue: Vue,
+    VueRouter: VueRouter,
+    Vuex: Vuex,
     VueTemplateCompiler: require('vue-template-compiler'),
 }
