@@ -1,19 +1,19 @@
 {
   "name": "@studyportals/vue-config",
   "description": "Collection of vue-related packages.",
-  "version": "1.2.0-alpha.3",
+  "version": "1.2.0-alpha.4",
   "author": "Studyportals B.V.",
   "contributors": [
     "Joos Huys <joos@studyportals.com>",
     "Danko Adamczyk <danko@studyportals.com>"
   ],
   "scripts": {
-    "clear-dist-folder": "rm -rf ./dist",
+    "clear-dist-folder": "rm -rf ./dll",
     "build": "npm run clear-dist-folder && webpack",
     "build-prod": "npm run clear-dist-folder && cross-env NODE_ENV=production webpack",
-    "prepublishOnly": "npm run build-prod"
+    "prepublishOnly": "npm run build"
   },
-  "main": "dist/vueConfig.js",
+  "main": "index.js",
   "keywords": [
     "vue"
   ],
