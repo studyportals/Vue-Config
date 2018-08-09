@@ -8,9 +8,7 @@ module.exports = {
 	context: process.cwd(),
 	entry: {
 		library: [
-			'vue',
-			'vuex',
-			'vue-router',
+			'./index',
 		]
 	},
 	output: {
