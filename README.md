@@ -56,6 +56,31 @@ _Development version_
 Once the dependencies are found, and resolved, they will be excluded from your bundle. Your bundle
 file should now be significantly smaller!
 
+## Make sure you do not include the library file on our portal.
+The vue-config library is by default loaded on every page. Loading this library multiple times will cause the page
+to break. It is therefore important to exlude them! There are several ways to embed your resources on our portals. Most of them boil down to parsing the DOM, extracting the javascript and stylesheets and injecting them on the page.
+
+``` javascript
+/**
+ * The CDN url of our Vue-Config package excluding the version number.
+ * @type {string}
+ */
+const vueConfigCdnUrl = 'https://cdn.jsdelivr.net/npm/@studyportals/vue-config';
+
+/**
+ * @return {boolean}
+ */
+const doWeHaveVueConfigLib = () => document.querySelectorAll(`script[src^="${vueConfigCdnUrl}"]`).length > 0
+```
+
+Now you can check if your resource belongs to the vue-config package and if the resource is already loaded on the page.
+``` javascript
+	if(src.startsWith(vueConfigCdnUrl) && doWeHaveVueConfigLib()){
+        // Do not import
+		return;
+	}
+```
+
 ## "But my application requires a package to run on a different version"
 
 In that case, that specific package can be updated, but you **first** need to
