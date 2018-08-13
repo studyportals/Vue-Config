@@ -1,6 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
-const {determineAlias, setProcessEnvPlugin, setUglifyPlugin} = require('./webpack-helpers.js');
+const {setProcessEnvPlugin, setUglifyPlugin} = require('./webpack-helpers.js');
 
 console.log(process.env.NODE_ENV);
 
