@@ -1,28 +1,6 @@
 const webpack = require("webpack");
 
 /**
- * Determine which file to use for different vue-related dependencies, depending
- * on the environment.
- *
- * @param {string} name
- * @return {string}
- */
-
-exports.determineAlias = function(name){
-
-	// Default, not minified.
-	let alias = `${name}/dist/${name}.common.js`;
-
-	// Only if we are in production environment, take the minified version.
-	if(JSON.stringify(process.env.NODE_ENV) === "production"){
-
-		alias = `${name}/dist/${name}.min.js`;
-	}
-
-	return alias;
-};
-
-/**
  * Include a plugin that sets the node environment variable to the right environment.
  *
  * @param {Array} plugins

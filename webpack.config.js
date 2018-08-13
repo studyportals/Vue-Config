@@ -33,14 +33,7 @@ module.exports = {
 			path: path.join(distFolder,  `${getFileName()}.json`),
 			name: "[name]"
 		})
-	],
-	resolve: {
-		alias: {
-			'vue$': determineAlias('vue'),
-			'vuex$': determineAlias('vuex'),
-			'vue-router$': determineAlias('vue-router')
-		}
-	}
+	]
 };
 
 module.exports.plugins = setProcessEnvPlugin(module.exports.plugins);
