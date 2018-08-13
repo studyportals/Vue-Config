@@ -1,4 +1,4 @@
 .idea
-dist
+dist/library*
 node_modules
 package-lock.json
