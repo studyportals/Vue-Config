@@ -1,7 +1,7 @@
 {
   "name": "@studyportals/vue-config",
   "description": "Collection of vue-related packages.",
-  "version": "1.2.0-alpha.12",
+  "version": "1.2.0-RC.1",
   "author": "Studyportals B.V.",
   "contributors": [
     "Joos Huys <joos@studyportals.com>",
