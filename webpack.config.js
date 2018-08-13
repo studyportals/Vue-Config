@@ -1,20 +1,11 @@
 const path = require("path");
 const webpack = require("webpack");
-const {setProcessEnvPlugin, setUglifyPlugin} = require('./webpack-helpers.js');
 
-console.log(process.env.NODE_ENV);
+const isProduction = () => process.env.NODE_ENV === 'production';
+const getDistFolder = () => path.join(__dirname, 'dist');
+const getFileName = () => (isProduction()) ? '[name].min' : '[name]';
 
-const distFolder = path.join(__dirname, 'dist');
-
-const getFileName = () => {
-	if(process.env.NODE_ENV === 'production'){
-		return '[name].min';
-	}
-
-	return '[name]';
-}
-
-module.exports = {
+const WebPackConfig = {
 	entry: {
 		library:[
 			'vue',
@@ -25,22 +16,40 @@ module.exports = {
 	},
 	output: {
 		filename: `${getFileName()}.js`,
-		path: distFolder,
+		path: getDistFolder(),
 		library: '[name]'
 	},
 	plugins: [
 		new webpack.DllPlugin({
-			path: path.join(distFolder,  `${getFileName()}.json`),
+			path: path.join(getDistFolder(),  `${getFileName()}.json`),
 			name: "[name]"
+		}),
+		new webpack.DefinePlugin({
+			'process.env': {
+				NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+			}
 		})
 	]
 };
 
-module.exports.plugins = setProcessEnvPlugin(module.exports.plugins);
-
-// Make necessary modifications for production environment.
 if(process.env.NODE_ENV === 'production'){
 
-	module.exports.devtool = '#source-map';
-	module.exports.plugins = setUglifyPlugin(module.exports.plugins);
+	WebPackConfig.devtool = '#source-map';
+	WebPackConfig.plugins.concat([
+		new webpack.optimize.UglifyJsPlugin({
+			sourceMap: true,
+			compress: {
+				warnings: false
+			},
+			output: {
+				comments: false
+			},
+			keep_fnames: true
+		}),
+		new webpack.LoaderOptionsPlugin({
+			minimize: true
+		})
+	]);
 }
+
+module.exports = WebPackConfig;
