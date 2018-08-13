@@ -58,7 +58,9 @@ file should now be significantly smaller!
 
 ## Make sure you do not include the library file on our portal.
 The vue-config library is by default loaded on every page. Loading this library multiple times will cause the page
-to break. It is therefore important to exlude them! There are several ways to embed your resources on our portals. Most of them boil down to parsing the DOM, extracting the javascript and stylesheets and injecting them on the page.
+to break. It is therefore important to exclude them! There are several ways to embed your resources on our portals. Most of them boil down to parsing the DOM, extracting the javascript and stylesheets and injecting them on the page.
+
+Please see the following snippet which should help you excluding the library file from being injected.
 
 ``` javascript
 /**
@@ -67,18 +69,11 @@ to break. It is therefore important to exlude them! There are several ways to em
  */
 const vueConfigCdnUrl = 'https://cdn.jsdelivr.net/npm/@studyportals/vue-config';
 
-/**
- * @return {boolean}
- */
-const doWeHaveVueConfigLib = () => document.querySelectorAll(`script[src^="${vueConfigCdnUrl}"]`).length > 0
-```
-
-Now you can check if your resource belongs to the vue-config package and if the resource is already loaded on the page.
-``` javascript
-	if(src.startsWith(vueConfigCdnUrl) && doWeHaveVueConfigLib()){
-        // Do not import
-		return;
-	}
+# Somewhere in the logic where you want to embed the javascript resource.
+if(src.startsWith(vueConfigCdnUrl)){
+    // Do not import
+    return;
+}
 ```
 
 ## "But my application requires a package to run on a different version"
