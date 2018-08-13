@@ -43,7 +43,9 @@ Open your main index.html file and add embed the pre-build library.
 _Production version_
 
 You can also include the non minified version (which enables the Vue debugger). This is totally fine
-as long as you make sure that the non minified version will never be embedded in production.
+as long as you make sure that the non minified version will never be embedded in production. _You shouldn't
+even try to embed the library file on our portals since it is already loaded trough the CDN so you should be
+fine ;-)_
 ```html
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@studyportals/vue-config/dist/library.js"></script>
 ```
