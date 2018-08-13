@@ -69,7 +69,7 @@ Please see the following snippet which should help you excluding the library fil
  */
 const vueConfigCdnUrl = 'https://cdn.jsdelivr.net/npm/@studyportals/vue-config';
 
-# Somewhere in the logic where you want to embed the javascript resource.
+// Somewhere in the logic where you want to embed the javascript resource.
 if(src.startsWith(vueConfigCdnUrl)){
     // Do not import
     return;
