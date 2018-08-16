@@ -35,7 +35,7 @@ const WebPackConfig = {
 if(process.env.NODE_ENV === 'production'){
 
 	WebPackConfig.devtool = '#source-map';
-	WebPackConfig.plugins.concat([
+	WebPackConfig.plugins = WebPackConfig.plugins.concat([
 		new webpack.optimize.UglifyJsPlugin({
 			sourceMap: true,
 			compress: {
