@@ -35,6 +35,12 @@ Add this plugin to your webpack configuration.
 }
 ```
 
+### Place of webpack configuration in folder structure
+The `library.json` file that is referenced relies on a certain folder structure to find its dependencies and exclude 
+them from the main application file that it builds. It is therefore important that your webpack configuration is put
+in the right place. *Make sure to put it one folder deeper than the root.* You could for instance create a `Build` folder
+in the root of your application and put your webpack file there.
+
 ### Load @studyportals/vue-config from our CDN.
 Open your main index.html file and add embed the pre-build library.
 ```html
