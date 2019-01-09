@@ -23,8 +23,14 @@ npm uninstall @studyportals/vue-multiselect vue vue-router vue-template-compiler
 
 Then we simply replace these by this library:
 
+Webpack 4: 
 ```bash
 npm install @studyportals/vue-config
+```
+
+Webpack 3: 
+```bash
+npm install @studyportals/vue-config@^1.2.1
 ```
 
 Add the following plugin to your webpack configuration (for example in webpack.base.conf.js):
