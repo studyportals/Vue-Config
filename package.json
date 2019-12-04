@@ -9,10 +9,8 @@
     "Stefan Klokgieters <stefan@studyportals.com>"
   ],
   "scripts": {
-    "clear-dist-folder": "rm -rf ./dist",
     "build-dev": "cross-env NODE_ENV=development webpack",
-    "build-prod": "cross-env NODE_ENV=production webpack",
-    "prepublishOnly": "npm run clear-dist-folder && npm run build-prod && npm run build-dev"
+    "build-prod": "cross-env NODE_ENV=production webpack"
   },
   "main": "index.js",
   "keywords": [
