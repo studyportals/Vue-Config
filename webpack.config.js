@@ -8,7 +8,7 @@ const getFileName = () => (isProduction()) ? '[name].min' : '[name]';
 
 const WebPackConfig = {
 	entry: {
-		library: [
+		"vue_config": [
 			'vue',
 			'vue-router',
 			'vuex',
@@ -46,22 +46,6 @@ if (process.env.NODE_ENV === 'production') {
 	]);
 
 	WebPackConfig.optimization.minimize = true;
-	WebPackConfig.optimization.minimizer = [
-		new UglifyJsPlugin({
-			cache: true,
-			parallel: true,
-			uglifyOptions: {
-				compress: {
-					warnings: false
-				},
-				ecma: 5,
-				output: {
-					comments: false
-				},
-			},
-			sourceMap: true
-		}),
-	]
 }
 
 module.exports = WebPackConfig;
