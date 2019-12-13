@@ -19,7 +19,7 @@
     "vue"
   ],
   "dependencies": {
-    "@studyportals/vue-multiselect": "^2.3.0",
+    "@studyportals/vue-multiselect": "^2.3.1",
     "uglifyjs-webpack-plugin": "^2.1.1",
     "vue": "2.5.16",
     "vue-router": "2.8.1",
