@@ -12,13 +12,15 @@ Currently the library includes:
 * vuex
 * vue-Router
 * vue-template-complier
+* vue-class-component
+* vue-property-decorator
 * @studyportals/vue-multiselect
 
 ## Usage
 First uninstall all dependencies which this packages provides:
 
 ```bash
-npm uninstall @studyportals/vue-multiselect vue vue-router vue-template-compiler vuex
+npm uninstall @studyportals/vue-multiselect vue vue-router vue-template-compiler vuex vue-class-component vue-property-decorator
 ```
 
 Then we simply replace these by this library:
