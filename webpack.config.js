@@ -13,8 +13,7 @@ const WebPackConfig = {
 			'vue-router',
 			'vuex',
 			'vue-class-component',
-			'vue-property-decorator',
-			'@studyportals/vue-multiselect'
+			'vue-property-decorator'
 		]
 	},
 	output: {

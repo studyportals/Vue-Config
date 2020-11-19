@@ -1,7 +1,7 @@
 {
   "name": "@studyportals/vue-config",
   "description": "Collection of vue-related packages.",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "author": "Studyportals B.V.",
   "contributors": [
     "Danko Adamczyk <danko@studyportals.com>",
@@ -19,7 +19,6 @@
     "vue"
   ],
   "dependencies": {
-    "@studyportals/vue-multiselect": "^2.3.1",
     "uglifyjs-webpack-plugin": "^2.1.1",
     "vue": "2.5.16",
     "vue-class-component": "^7.2.3",
