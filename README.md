@@ -2,9 +2,10 @@
 
 ## Purpose
 This library is a replacement for several common Vue npm packages. The library 
-is loaded in on all pages on our portals, which means that any Vue microservice 
-on our portals can rely on these packes being there. This way we avoid the duplication 
-of every microservice loading in the same npm packages.
+is loaded in on all pages on our portals and pages of UniversityAdmin that contain
+one or more Vue microservices, which means that any Vue microservice on our portals
+and UniversityAdmin can rely on these packages being there. This way we avoid the
+duplication of every microservice loading in the same NPM packages.
  
 Currently the library includes:
 
@@ -14,13 +15,12 @@ Currently the library includes:
 * vue-template-complier
 * vue-class-component
 * vue-property-decorator
-* @studyportals/vue-multiselect
 
 ## Usage
-First uninstall all dependencies which this packages provides:
+First uninstall all dependencies which this package provides:
 
 ```bash
-npm uninstall @studyportals/vue-multiselect vue vue-router vue-template-compiler vuex vue-class-component vue-property-decorator
+npm uninstall vue vue-router vue-template-compiler vuex vue-class-component vue-property-decorator
 ```
 
 Then we simply replace these by this library:
@@ -35,7 +35,13 @@ Webpack 3:
 npm install @studyportals/vue-config@^1.2.1
 ```
 
-Add the following plugin to your webpack configuration (for example in webpack.base.conf.js):
+Under the [purpose](#purpose) section, the benefit was mentioned of not having to
+load in the same dependencies multiple times. So, webpack needs to take care of
+excluding vue-config-related packages when building your project. If you are using
+vue-config for a microservice that is deployed using the [webpack-helper package](https://github.com/studyportals/webpack-helper),
+no extra webpack configuration is needed for this to be taken care of. Otherwise,
+you'll need to add the following plugin to your webpack configuration (for example
+in webpack.base.conf.js):
 
 ``` javascript
 plugins: [
